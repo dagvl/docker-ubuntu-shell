@@ -15,6 +15,7 @@ RUN apt-get install -y \
     iputils-ping \
     awscli \
     groff \
+    apache2-utils \
     netcat
 
 RUN cd /usr/bin && \
