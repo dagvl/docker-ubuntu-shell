@@ -1,0 +1,44 @@
+{
+  "title": "kubernetes test",
+  "description": "kubernetes text",
+  "configuration": {},
+  "steady-state-hypothesis": {
+    "title": "nginx is healthy",
+    "probes": [
+      {
+        "name": "nginx-should-be-healthy",
+        "type": "probe",
+        "tolerance": true,
+        "provider": {
+          "type": "python",
+          "module": "chaosk8s.probes",
+          "func": "microservice_available_and_healthy",
+          "arguments": {
+            "name": "nginx-static-data",
+            "ns": "loadtest"
+          }
+        }
+      }
+    ]
+  },
+  "method": [
+    {
+      "type": "action",
+      "name": "terminate-nginx-pod",
+      "provider": {
+        "type": "python",
+        "module": "chaosk8s.pod.actions",
+        "func": "terminate_pods",
+        "arguments": {
+          "label_selector": "app=nginx-static-data",
+          "name_pattern": "nginx-static-data-.*$",
+          "rand": true,
+          "ns": "loadtest"
+        }
+      },
+      "pauses": {
+        "after": 5
+      }
+    }
+  ]
+}
