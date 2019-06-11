@@ -3,7 +3,7 @@ FROM ubuntu:latest
 
 RUN apt-get update
 
-RUN apt-get install -y \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     curl \
     net-tools \
     docker \
@@ -18,7 +18,6 @@ RUN apt-get install -y \
     apache2-utils \
     netcat \
     wget \
-    nslookup \
     socat \
     dnsutils \
     htop \
