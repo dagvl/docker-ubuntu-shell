@@ -22,11 +22,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     dnsutils \
     htop \
     iptables \
-    python-pip
+    python3-pip
 
 RUN cd /usr/bin && \
     curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
     chmod a+x ./kubectl
 
-RUN pip install chaostoolkit
-RUN pip install chaostoolkit-kubernetes
+RUN pip3 install chaostoolkit
+RUN pip3 install chaostoolkit-kubernetes
