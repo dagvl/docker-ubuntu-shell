@@ -30,3 +30,5 @@ RUN cd /usr/bin && \
 
 RUN pip3 install chaostoolkit
 RUN pip3 install chaostoolkit-kubernetes
+
+ADD test.json
