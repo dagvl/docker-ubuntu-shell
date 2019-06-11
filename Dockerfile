@@ -22,10 +22,12 @@ RUN apt-get install -y \
     socat \
     dnsutils \
     htop \
-    iptables
+    iptables \
+    python-pip
 
 RUN cd /usr/bin && \
     curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
     chmod a+x ./kubectl
 
-
+RUN pip install chaostoolkit
+RUN pip install chaostoolkit-kubernetes
