@@ -13,7 +13,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     mtr \
     traceroute \
     iputils-ping \
-    awscli \
     groff \
     apache2-utils \
     netcat \
@@ -28,7 +27,5 @@ RUN cd /usr/bin && \
     curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
     chmod a+x ./kubectl
 
-RUN pip3 install chaostoolkit
-RUN pip3 install chaostoolkit-kubernetes
+RUN pip3 install awscli
 
-ADD test.json /
