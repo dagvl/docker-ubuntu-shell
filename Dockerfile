@@ -2,7 +2,9 @@ FROM ubuntu:latest
 
 
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
     curl \
     net-tools \
     docker \
@@ -21,6 +23,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && DEBIAN_FRONTEND=noninteract
     htop \
     iptables \
     python3-pip \
+    tcpdump \
+    tshark \
     ssh && \
     rm -rf /var/lib/apt/lists/*
     
