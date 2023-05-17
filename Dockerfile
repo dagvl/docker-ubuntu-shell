@@ -1,6 +1,5 @@
 FROM ubuntu:latest
-
-
+ARG TARGETPLATFORM
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
@@ -11,6 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     build-essential \
     apt-utils \
     vim \
+    nano \
     mtr \
     traceroute \
     iputils-ping \
@@ -25,12 +25,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     python3-pip \
     tcpdump \
     tshark \
-    ssh && \
+    ssh \
+    unzip && \
     rm -rf /var/lib/apt/lists/*
-    
-RUN cd /usr/bin && \
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
-    chmod a+x ./kubectl
 
-RUN pip3 install awscli
-
+ADD get_binaries.sh /root
+RUN /usr/bin/bash -x /root/get_binaries.sh
