@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:rolling
 ARG TARGETPLATFORM
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
@@ -6,7 +6,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     curl \
     net-tools \
-    docker \
+    docker.io \
     build-essential \
     apt-utils \
     vim \
@@ -16,7 +16,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     iputils-ping \
     groff \
     apache2-utils \
-    netcat \
+    ncat \
     wget \
     socat \
     dnsutils \
@@ -26,6 +26,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     tcpdump \
     tshark \
     ssh \
+    kafkacat \
     unzip && \
     rm -rf /var/lib/apt/lists/*
 
